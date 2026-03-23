@@ -137,4 +137,39 @@
             <ul>
                 <li>Bater ponto e calcular metas diárias.</li>
                 <li>Realizar CRM 360°, Limpar display e Unichilli.</li>
-                <li>Repor itens da frente
+                <li>Repor itens da frente (estojos, coleções).</li>
+                <li><strong>Fechamento:</strong> Contagem, foto no grupo e limpeza final.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="sheet-view" class="content-view">
+        <iframe id="sheet-iframe" src=""></iframe>
+    </div>
+</main>
+
+<script>
+    function openView(id) {
+        document.querySelectorAll('.content-view').forEach(v => v.classList.remove('active'));
+        document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+        document.getElementById(id).classList.add('active');
+        const btn = document.querySelector(`[onclick="openView('${id}')"]`);
+        if(btn) btn.classList.add('active');
+        document.getElementById('current-title').innerText = btn.innerText.replace(/^[^\s]+\s/, '');
+    }
+
+    function openSheet(url) {
+        document.querySelectorAll('.content-view').forEach(v => v.classList.remove('active'));
+        document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+        const view = document.getElementById('sheet-view');
+        const iframe = document.getElementById('sheet-iframe');
+        iframe.src = url + "&rm=minimal";
+        view.classList.add('active');
+        const btn = document.querySelector(`[onclick="openSheet('${url}')"]`);
+        if(btn) btn.classList.add('active');
+        document.getElementById('current-title').innerText = btn.innerText.replace(/^[^\s]+\s/, '');
+    }
+    window.onload = () => openView('historia');
+</script>
+</body>
+</html>
