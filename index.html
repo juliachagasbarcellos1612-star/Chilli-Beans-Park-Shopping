@@ -5,54 +5,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chilli Beans Park Shopping Canoas</title>
     <style>
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; background-color: #1a1a1a; color: white; }
-        header { background: #e31b24; color: white; padding: 25px; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
-        h1 { margin: 0; font-size: 24px; letter-spacing: 1px; }
-        .nav-buttons { display: flex; justify-content: center; gap: 15px; margin: 25px; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; background-color: #1a1a1a; color: white; text-align: center; }
+        header { background: #e31b24; color: white; padding: 25px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
+        h1 { margin: 0; font-size: 22px; text-transform: uppercase; letter-spacing: 1px; }
+        .nav-buttons { margin: 25px; }
         button { 
-            padding: 12px 24px; 
-            cursor: pointer; 
-            border: 2px solid #e31b24; 
-            background: transparent; 
-            color: white; 
-            border-radius: 30px; 
-            font-weight: bold;
-            transition: 0.3s;
+            padding: 12px 24px; cursor: pointer; border: 2px solid #e31b24; 
+            background: transparent; color: white; border-radius: 30px; 
+            font-weight: bold; transition: 0.3s; margin: 5px;
         }
-        button:hover { background: #e31b24; transform: scale(1.05); }
-        .content { display: flex; flex-direction: column; align-items: center; padding: 10px; }
+        button:hover { background: #e31b24; }
+        .content { padding: 10px; }
         iframe { 
-            width: 95%; 
-            height: 70vh; 
-            border: none; 
-            border-radius: 15px; 
-            background: white; 
-            box-shadow: 0 8px 30px rgba(0,0,0,0.5); 
+            width: 95%; height: 75vh; border: none; border-radius: 10px; 
+            background: white; box-shadow: 0 8px 30px rgba(0,0,0,0.5); 
         }
-        footer { margin-top: 20px; text-align: center; font-size: 12px; color: #888; padding-bottom: 20px; }
     </style>
 </head>
 <body>
 
 <header>
-    <h1>CHILLI BEANS PARK SHOPPING CANOAS</h1>
+    <h1>Chilli Beans Park Shopping Canoas</h1>
 </header>
 
 <div class="nav-buttons">
-    <button onclick="mudarPlanilha('LINK_DA_PLANILHA_PRINCIPAIS')">HISTÓRICO PRINCIPAIS</button>
-    <button onclick="mudarPlanilha('LINK_DA_PLANILHA_ACESSORIOS')">HISTÓRICO ACESSÓRIOS</button>
+    <button onclick="mudar('https://docs.google.com/spreadsheets/d/e/2PACX-1vRPNuxbf2Tixewjj7Z-EXB3GuYOKHtEooSD2LJ4oI3ZRnium3M3BHof0l3I1Yo8k68pFuxxruZge-IE/pubhtml?gid=1534952399&single=true')">HISTÓRICO PRINCIPAIS</button>
+    
+    <button onclick="mudar('https://docs.google.com/spreadsheets/d/e/2PACX-1vRPNuxbf2Tixewjj7Z-EXB3GuYOKHtEooSD2LJ4oI3ZRnium3M3BHof0l3I1Yo8k68pFuxxruZge-IE/pubhtml?gid=1534952399&single=true')">HISTÓRICO ACESSÓRIOS</button>
 </div>
 
 <div class="content">
-    <iframe id="painel" src="LINK_DA_PLANILHA_PRINCIPAIS"></iframe>
+    <iframe id="painel" src="LINK_AQUI_1"></iframe>
 </div>
 
-<footer>
-    Portal de Inventário em Tempo Real
-</footer>
-
 <script>
-    function mudarPlanilha(url) {
+    function mudar(url) {
         document.getElementById('painel').src = url;
     }
 </script>
