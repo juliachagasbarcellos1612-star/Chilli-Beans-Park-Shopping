@@ -29,8 +29,8 @@
         .article { max-width: 1000px; margin: 0 auto 100px auto; line-height: 1.6; }
         .article h2 { color: var(--red); border-bottom: 2px solid var(--red); padding-bottom: 10px; text-transform: uppercase; margin-bottom: 20px; }
         
-        .planner-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-top: 20px; }
-        .day-card { background: var(--gray); border-top: 4px solid var(--red); padding: 15px; border-radius: 5px; }
+        .planner-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 15px; margin-top: 20px; }
+        .day-card { background: var(--gray); border-top: 4px solid var(--red); padding: 15px; border-radius: 5px; min-height: 180px; }
         .day-card h4 { color: var(--red); margin-top: 0; text-transform: uppercase; border-bottom: 1px solid #333; padding-bottom: 5px; }
         .day-card ul { padding-left: 15px; font-size: 0.85rem; color: #ccc; }
         .day-card li { margin-bottom: 8px; }
@@ -71,105 +71,4 @@
             <p>Foi ali que surgiu a essência da marca: <strong>👉 ousada, 👉 diferente, 👉 conectada com arte e comportamento.</strong></p>
             <p>A primeira loja física veio depois, na icônica <strong>Galeria Ouro Fino</strong>, em São Paulo — um lugar conhecido por reunir marcas fora do padrão e estética fora do convencional.</p>
             <p>A Chilli Beans nasceu com essa pegada: <strong>🔥 alternativa, 🔥 urbana, 🔥 quase “anti-padrão”.</strong></p>
-            <p>Enquanto outras marcas focavam no luxo tradicional, a Chilli apostou em algo novo: óculos como acessório de atitude, coleções rápidas, preço acessível e identidade jovem.</p>
-            <p><strong>Nossos 5 Pilares:</strong> Moda, Música, Arte, Geek e Esporte.</p>
-        </div>
-    </div>
-
-    <div id="rotina" class="content-view">
-        <div class="article">
-            <h2>Agenda Vendedor Semanal</h2>
-            <div class="planner-grid">
-                <div class="day-card">
-                    <h4>Segunda (SEG)</h4>
-                    <ul>
-                        <li>Revisar tarefas do final de semana</li>
-                        <li>Olhar OS para fazer</li>
-                        <li>Calcular meta diária / Ver o que faltou</li>
-                        <li>Programar posts com colegas</li>
-                        <li><strong>CRM 360° (mín. 50 contatos)</strong></li>
-                    </ul>
-                </div>
-                <div class="day-card">
-                    <h4>Terça (TER)</h4>
-                    <ul>
-                        <li>Fazer checklist do dia</li>
-                        <li>Calcular meta diária</li>
-                        <li>Limpar display / flanelar óculos</li>
-                        <li>Postagens para Instagram</li>
-                        <li>Conferir notas da entrada</li>
-                    </ul>
-                </div>
-                <div class="day-card">
-                    <h4>Quarta (QUA)</h4>
-                    <ul>
-                        <li>Fazer checklist do dia</li>
-                        <li>Calcular meta diária</li>
-                        <li>Limpar display / flanelar óculos</li>
-                        <li>Enviar relógios para conserto</li>
-                        <li>Resolver pendências de SAC</li>
-                    </ul>
-                </div>
-                <div class="day-card">
-                    <h4>Quinta (QUI)</h4>
-                    <ul>
-                        <li>Fazer checklist do dia</li>
-                        <li>Calcular meta diária</li>
-                        <li>Limpar display / flanelar óculos</li>
-                        <li>Postagens para Instagram</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div id="checklist" class="content-view">
-        <div class="article">
-            <h2>Checklist Operacional</h2>
-            <h3>🌅 Manhã</h3>
-            <ul>
-                <li>Abrir loja, luzes e PC / Bater ponto e calcular metas.</li>
-                <li>Limpeza: Varrer, lixos, balcões e passar pano.</li>
-                <li>Contagem e organização dos displays.</li>
-                <li>Realizar CRM 360°, Limpar display e Unichilli.</li>
-            </ul>
-            <h3>🌙 Tarde / Noite</h3>
-            <ul>
-                <li>Bater ponto e calcular metas diárias.</li>
-                <li>Realizar CRM 360°, Limpar display e Unichilli.</li>
-                <li>Repor itens da frente (estojos, coleções).</li>
-                <li><strong>Fechamento:</strong> Contagem, foto no grupo e limpeza final.</li>
-            </ul>
-        </div>
-    </div>
-
-    <div id="sheet-view" class="content-view">
-        <iframe id="sheet-iframe" src=""></iframe>
-    </div>
-</main>
-
-<script>
-    function openView(id) {
-        document.querySelectorAll('.content-view').forEach(v => v.classList.remove('active'));
-        document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
-        document.getElementById(id).classList.add('active');
-        const btn = document.querySelector(`[onclick="openView('${id}')"]`);
-        if(btn) btn.classList.add('active');
-        document.getElementById('current-title').innerText = btn.innerText.replace(/^[^\s]+\s/, '');
-    }
-
-    function openSheet(url) {
-        document.querySelectorAll('.content-view').forEach(v => v.classList.remove('active'));
-        document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
-        const view = document.getElementById('sheet-view');
-        const iframe = document.getElementById('sheet-iframe');
-        iframe.src = url + "&rm=minimal";
-        view.classList.add('active');
-        const btn = document.querySelector(`[onclick="openSheet('${url}')"]`);
-        if(btn) btn.classList.add('active');
-        document.getElementById('current-title').innerText = btn.innerText.replace(/^[^\s]+\s/, '');
-    }
-    window.onload = () => openView('historia');
-</script>
-</body>
-</html>
+            <p>Enquanto outras marcas focavam no luxo tradicional, a Chilli apostou em algo
