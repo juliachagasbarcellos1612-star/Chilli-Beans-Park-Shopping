@@ -26,14 +26,20 @@
         iframe { width: 100%; height: 85vh; border: none; border-radius: 12px; background: white; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
 
         /* Estilo Artigo e Tabela Planner */
-        .article { max-width: 1000px; margin: 0 auto 100px auto; line-height: 1.6; }
+        .article { max-width: 1100px; margin: 0 auto 100px auto; line-height: 1.6; }
         .article h2 { color: var(--red); border-bottom: 2px solid var(--red); padding-bottom: 10px; text-transform: uppercase; margin-bottom: 20px; }
-        
+        .article h3 { color: var(--red); margin-top: 30px; }
+        .article p { color: #ddd; font-size: 1.05rem; }
+        .article ul { list-style: none; padding: 0; }
+        .article li { margin-bottom: 10px; padding-left: 15px; border-left: 2px solid var(--red); }
+
+        /* Grid do Planner */
         .planner-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 15px; margin-top: 20px; }
-        .day-card { background: var(--gray); border-top: 4px solid var(--red); padding: 15px; border-radius: 5px; min-height: 180px; }
-        .day-card h4 { color: var(--red); margin-top: 0; text-transform: uppercase; border-bottom: 1px solid #333; padding-bottom: 5px; }
-        .day-card ul { padding-left: 15px; font-size: 0.85rem; color: #ccc; }
-        .day-card li { margin-bottom: 8px; }
+        .day-card { background: var(--gray); border-top: 4px solid var(--red); padding: 15px; border-radius: 5px; min-height: 200px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
+        .day-card h4 { color: var(--red); margin: 0 0 10px 0; text-transform: uppercase; border-bottom: 1px solid #333; padding-bottom: 5px; font-size: 0.9rem; }
+        .day-card ul { padding: 0; font-size: 0.85rem; color: #ccc; }
+        .day-card li { margin-bottom: 8px; border-left: none; padding-left: 0; }
+        .day-card strong { color: #fff; }
 
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
     </style>
@@ -59,7 +65,7 @@
 
 <main>
     <header>
-        <span id="current-title">Bem-vindo</span>
+        <span id="current-title">Quadro de Avisos</span>
         <span style="color: var(--red); font-size: 1.2rem;">🌶️</span>
     </header>
 
@@ -67,8 +73,9 @@
         <div class="article">
             <h2>Nossa História</h2>
             <p>A Chilli Beans nasceu em 1997, criada por <strong>Caito Maia</strong> — e, diferente do que muita gente imagina, ela não começou no shopping… começou no underground.</p>
-            <p>Antes da marca existir como loja, o Caito vendia óculos em lugares super alternativos como o <strong>Mercado Mundo Mix</strong>, que era um ponto de encontro de criatividade, música e moda independente nos anos 90.</p>
-            <p>Foi ali que surgiu a essência da marca: <strong>👉 ousada, 👉 diferente, 👉 conectada com arte e comportamento.</strong></p>
-            <p>A primeira loja física veio depois, na icônica <strong>Galeria Ouro Fino</strong>, em São Paulo — um lugar conhecido por reunir marcas fora do padrão e estética fora do convencional.</p>
-            <p>A Chilli Beans nasceu com essa pegada: <strong>🔥 alternativa, 🔥 urbana, 🔥 quase “anti-padrão”.</strong></p>
-            <p>Enquanto outras marcas focavam no luxo tradicional, a Chilli apostou em algo
+            <p>Antes da marca existir como loja, o Caito vendia óculos em lugares super alternativos como o Mercado Mundo Mix, que era um ponto de encontro de criatividade, música e moda independente nos anos 90.</p>
+            <p>Foi ali que surgiu a essência da marca:<br>
+            👉 ousada<br>
+            👉 diferente<br>
+            👉 conectada com arte e comportamento</p>
+            <p>A primeira loja física veio depois, na
