@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chilli Beans | Hub Park Canoas</title>
+    
+    <link rel="icon" type="image/png" href="logo.png">
+    
     <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap" rel="stylesheet">
     
     <style>
@@ -29,6 +32,7 @@
         .content-view { display: none; padding: 30px; flex: 1; }
         .content-view.active { display: block; animation: fadeIn 0.4s ease; }
 
+        /* ESTILOS DE TEXTO E CARDS */
         .home-quote { font-size: 2.2rem; font-weight: 700; color: var(--red); text-transform: uppercase; margin-bottom: 30px; line-height: 1; border-left: 8px solid var(--red); padding-left: 20px; }
         .footer-quote { text-align: center; padding: 40px 20px; color: #444; text-transform: uppercase; font-weight: 700; letter-spacing: 3px; font-size: 0.9rem; margin-top: auto; }
 
@@ -43,6 +47,10 @@
         .day-card li { margin-bottom: 8px; padding-left: 20px; position: relative; }
         .day-card li::before { content: '🌶️'; position: absolute; left: 0; font-size: 0.7rem; }
 
+        .article h2 { color: var(--red); text-transform: uppercase; margin-bottom: 20px; font-size: 1.2rem; }
+        .article h3 { color: #fff; border-bottom: 1px solid var(--red); display: inline-block; margin-top: 25px; margin-bottom: 15px; }
+
+        /* MOBILE */
         @media (max-width: 850px) {
             body { flex-direction: column; }
             nav { width: 100%; height: auto; border-right: none; border-bottom: 3px solid var(--red); flex-direction: row; display: block; overflow-x: auto; white-space: nowrap; position: sticky; top: 0; z-index: 100; }
@@ -52,8 +60,6 @@
             .home-quote { font-size: 1.6rem; }
         }
 
-        .article h2 { color: var(--red); text-transform: uppercase; margin-bottom: 20px; font-size: 1.2rem; }
-        .article h3 { color: #fff; border-bottom: 1px solid var(--red); display: inline-block; margin-top: 25px; margin-bottom: 15px; }
         iframe { width: 100%; height: 85vh; border: none; border-radius: 12px; background: white; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
     </style>
@@ -88,10 +94,10 @@
                 <p>A Chilli Beans foi fundada em 1997 por <strong>Caito Maia</strong>. Tudo começou no underground do <strong>Mercado Mundo Mix</strong>, em São Paulo, logo após o fim de sua banda de rock. O que era um plano para financiar a música tornou-se uma revolução no varejo.</p>
                 
                 <h3>A Origem e o Sucesso</h3>
-                <p>Caito trazia óculos dos EUA para vender aos amigos. Com o fim da banda, o estande descolado no Mundo Mix virou o marco zero de uma marca que introduziu o <strong>self-service</strong> e o <strong>fast-fashion</strong> (lançamentos semanais) em um mercado antes trancado em vitrines.</p>
+                <p>Caito trazia óculos dos EUA para vender aos amigos. Com o fim da banda, o estande descolado no Mundo Mix virou o marco zero de uma marca que introduziu o <strong>self-service</strong> e o <strong>fast-fashion</strong> no mercado de óticas.</p>
 
                 <h3>Expansão e Consolidação</h3>
-                <p>Popularizamos o modelo de quiosques em shoppings e expandimos via franquias para centenas de pontos em países como Portugal, EUA, Colômbia e México. Hoje, somos a maior rede de óticas e acessórios da América Latina, vendendo mais que óculos: vendemos <strong>estilo, design e atitude.</strong></p>
+                <p>Popularizamos o modelo de quiosques em shoppings e expandimos para centenas de pontos ao redor do mundo. Hoje, somos a maior rede da América Latina, vendendo <strong>estilo, design e atitude.</strong></p>
                 
                 <h3>Nossos Pilares</h3>
                 <ul style="list-style: none; padding: 0; margin: 20px 0; color: #ccc;">
@@ -141,8 +147,7 @@
                         </ul>
                     </div>
                 </div>
-                
-                <h3 style="margin-top: 30px;">Checklist Diário (Abertura/Fechamento)</h3>
+                <h3 style="margin-top: 30px;">Checklist Diário</h3>
                 <div class="grid-buttons">
                     <div class="btn-action">CONFERIR VÍTRINES</div>
                     <div class="btn-action">CONFERIR SISTEMA</div>
@@ -171,7 +176,6 @@
         <div id="tabelas" class="content-view">
             <div class="article">
                 <h2>Cardápio de Lentes</h2>
-                <p>Selecione o Laboratório para abrir as tabelas no Google Drive:</p>
                 <div class="grid-buttons">
                     <a href="https://drive.google.com/drive/folders/1N1F8izwHo1kU-IfeY5zKU57DNJSimPeE?usp=sharing" target="_blank" class="btn-action">ZEISS</a>
                     <a href="https://drive.google.com/file/d/19QWbii-ignlsxgpDG5mss1gzxAKls4Hk/view?usp=sharing" target="_blank" class="btn-action">ESSILOR</a>
