@@ -14,7 +14,6 @@
         /* MENU LATERAL */
         nav { width: 280px; background: var(--gray); border-right: 3px solid var(--red); display: flex; flex-direction: column; flex-shrink: 0; overflow-y: auto; }
         
-        /* ÁREA DA LOGO (ATUALIZADA) */
         .logo-area { padding: 30px; text-align: center; border-bottom: 1px solid #333; }
         .logo-area img { max-width: 140px; height: auto; display: block; margin: 0 auto; }
 
@@ -48,12 +47,11 @@
         .day-card li { margin-bottom: 8px; padding-left: 20px; position: relative; }
         .day-card li::before { content: '🌶️'; position: absolute; left: 0; font-size: 0.7rem; }
 
-        /* RESPONSIVIDADE (MOBILE) */
+        /* MOBILE */
         @media (max-width: 850px) {
             body { flex-direction: column; }
             nav { width: 100%; height: auto; border-right: none; border-bottom: 3px solid var(--red); flex-direction: row; display: block; overflow-x: auto; white-space: nowrap; position: sticky; top: 0; z-index: 100; }
-            .logo-area { display: none; } /* Esconde logo no mobile p/ poupar espaço */
-            .menu-group { display: none; }
+            .logo-area, .menu-group { display: none; }
             .nav-link { display: inline-flex; padding: 15px 20px; border-bottom: none; border-right: 1px solid #333; }
             .content-view { padding: 20px; }
             .home-quote { font-size: 1.6rem; }
@@ -89,10 +87,21 @@
         <div id="historia" class="content-view active">
             <div class="home-quote">Verdade e olho no olho</div>
             <div class="article">
-                <h2>Nossa História</h2>
-                <p>A Chilli Beans nasceu em 1997, criada por <strong>Caito Maia</strong> no underground do Mercado Mundo Mix.</p>
-                <p>Essência: <strong>Ousada, Diferente e Conectada com arte e comportamento.</strong></p>
-                <p>Pilares: <strong>Moda, Música, Arte, Geek e Esporte.</strong></p>
+                <h2>Nossa Jornada</h2>
+                <p>A Chilli Beans nasceu em 1997, criada por <strong>Caito Maia</strong> no underground do <strong>Mercado Mundo Mix</strong>. O que começou como uma venda direta de óculos transformou-se em um movimento que desafiou o mercado óptico tradicional.</p>
+                
+                <p>Fomos pioneiros no conceito de <strong>self-service óptico</strong>, permitindo que o cliente tocasse, experimentasse e vivesse o produto sem as barreiras de balcões e chaves. Óculos deixaram de ser apenas saúde para se tornarem <strong>acessórios fundamentais de moda.</strong></p>
+                
+                <p>Hoje, somos a maior rede especializada em óculos e relógios da América Latina, sustentada por pilares que correm no nosso sangue:</p>
+                
+                <ul style="list-style: none; padding: 0; margin: 20px 0; color: #ccc;">
+                    <li style="margin-bottom: 10px;"><strong style="color: var(--red);">⚡ MODA:</strong> Tendências globais com lançamentos semanais.</li>
+                    <li style="margin-bottom: 10px;"><strong style="color: var(--red);">🎸 MÚSICA:</strong> A trilha sonora da nossa alma e collabs épicas.</li>
+                    <li style="margin-bottom: 10px;"><strong style="color: var(--red);">🎨 ARTE:</strong> Design como forma de expressão e conexão.</li>
+                    <li style="margin-bottom: 10px;"><strong style="color: var(--red);">🕹️ GEEK:</strong> O universo gamer e pop transformado em coleções exclusivas.</li>
+                </ul>
+
+                <p>Aqui no <strong>Park Shopping Canoas</strong>, levamos essa herança a sério. Não vendemos apenas lentes; entregamos estilo e atitude.</p>
             </div>
         </div>
 
@@ -119,7 +128,6 @@
                     <a href="https://indiolab.com/calculo-diametro/" target="_blank" class="btn-action">📏 CALC. DIÂMETRO</a>
                     <a href="https://indiolab.com/calculo-bordas/" target="_blank" class="btn-action">⚖️ CALC. BORDAS</a>
                     <a href="https://vantagens.essilorconecta.com.br/login" target="_blank" class="btn-action">💎 ESSILOR CONECTA</a>
-                    <a href="https://www.instagram.com/chillibeansparkshoppingcanoas" target="_blank" class="btn-action">📸 INSTAGRAM</a>
                 </div>
             </div>
         </div>
