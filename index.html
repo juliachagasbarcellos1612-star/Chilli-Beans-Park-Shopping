@@ -36,12 +36,28 @@
         .content-view { display: none; padding: 30px; flex: 1; }
         .content-view.active { display: block; animation: fadeIn 0.4s ease; }
 
-        .article h2 { color: var(--sidebar); text-transform: uppercase; margin-bottom: 20px; font-size: 1.2rem; border-bottom: 2px solid var(--red); display: inline-block; padding-bottom: 5px; }
-        .grid-buttons { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 15px; margin-top: 20px; }
+        .home-quote { font-size: 2.2rem; font-weight: 700; color: var(--red); text-transform: uppercase; margin-bottom: 30px; line-height: 1; border-left: 8px solid var(--red); padding-left: 20px; }
+        
+        .step-card { background: var(--white); border-left: 5px solid var(--red); padding: 20px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); margin-bottom: 20px; }
+        .step-card h4 { color: var(--red); margin: 0 0 10px 0; text-transform: uppercase; font-size: 1rem; }
+        
+        .cvba-box { background: #fff5f5; border: 1px dashed var(--red); padding: 15px; border-radius: 8px; margin-top: 10px; }
+        .cvba-item { margin-bottom: 10px; font-size: 0.85rem; }
+        .cvba-item b { color: var(--red); }
+
+        .category-title { color: var(--red); font-size: 0.9rem; font-weight: 700; text-transform: uppercase; margin: 25px 0 10px 0; display: block; }
+        .grid-buttons { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 15px; margin-top: 10px; }
         .btn-action { background: var(--white); border: 1px solid #dee2e6; color: var(--sidebar); padding: 20px; text-decoration: none; border-radius: 12px; font-weight: 700; transition: 0.3s; text-align: center; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
         .btn-action:hover { border-color: var(--red); color: var(--red); transform: translateY(-3px); box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
 
-        .category-title { color: var(--red); font-size: 0.9rem; font-weight: 700; text-transform: uppercase; margin: 25px 0 10px 0; display: block; }
+        .planner-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+        .day-card { background: var(--white); border-top: 5px solid var(--red); padding: 20px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+        .day-card h4 { color: var(--red); margin: 0 0 15px 0; text-transform: uppercase; border-bottom: 1px solid #f1f1f1; padding-bottom: 10px; }
+        .day-card ul { padding: 0; list-style: none; font-size: 0.85rem; color: var(--text-muted); line-height: 1.6; }
+        .day-card li { margin-bottom: 8px; padding-left: 20px; position: relative; }
+        .day-card li::before { content: '🌶️'; position: absolute; left: 0; font-size: 0.7rem; }
+
+        .article h2 { color: var(--sidebar); text-transform: uppercase; margin-bottom: 20px; font-size: 1.2rem; border-bottom: 2px solid var(--red); display: inline-block; padding-bottom: 5px; }
 
         @media (max-width: 850px) {
             body { flex-direction: column; }
@@ -50,24 +66,24 @@
             .nav-link { display: inline-flex; padding: 15px 20px; border-bottom: none; border-right: 1px solid #3d4145; }
         }
 
+        iframe { width: 100%; height: 85vh; border: 1px solid #dee2e6; border-radius: 12px; background: white; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .footer-quote { text-align: center; padding: 40px 20px; color: #adb5bd; text-transform: uppercase; font-weight: 700; letter-spacing: 3px; font-size: 0.9rem; margin-top: auto; }
     </style>
 </head>
 <body>
 
 <nav>
     <div class="logo-area"><img src="logo.png" alt="Chilli Beans"></div>
-
     <div class="menu-group">Principal</div>
     <div class="nav-link active" onclick="openView('historia')">🏠 Home</div>
     <div class="nav-link" onclick="openView('venda')">🌶️ Técnica de Venda</div>
     <div class="nav-link" onclick="openView('treinamentos')">🎓 Treinamentos</div>
     <div class="nav-link" onclick="openView('rotina')">📅 Agenda Vendedor</div>
-    
     <div class="menu-group">Gestão</div>
     <div class="nav-link" onclick="openSheet('https://docs.google.com/spreadsheets/d/e/2PACX-1vTjP1U4Bf1n2XNpBe8WCmWGduljeq0xTyHsytici9D_gul3dm0vor_1ZItm-yX8cQ315NT4VVNR2U4J/pubhtml?gid=1102116016&single=true')">🕒 Horários</div>
     <div class="nav-link" onclick="openSheet('https://docs.google.com/spreadsheets/d/e/2PACX-1vTjP1U4Bf1n2XNpBe8WCmWGduljeq0xTyHsytici9D_gul3dm0vor_1ZItm-yX8cQ315NT4VVNR2U4J/pubhtml?gid=881852481&single=true')">🧽 Limpeza</div>
-    
+    <div class="nav-link" onclick="openSheet('https://docs.google.com/spreadsheets/d/e/2PACX-1vRPNuxbf2Tixewjj7Z-EXB3GuYOKHtEooSD2LJ4oI3ZRnium3M3BHof0l3I1Yo8k68pFuxxruZge-IE/pubhtml?gid=1534952399&single=true')">📊 Contagem</div>
     <div class="menu-group">Recursos</div>
     <div class="nav-link" onclick="openView('links')">🔗 Links Úteis</div>
     <div class="nav-link" onclick="openView('tabelas')">👓 Tabelas de Grau</div>
@@ -75,55 +91,105 @@
 
 <main>
     <header><span id="current-title">HUB DE GESTÃO</span> 🌶️</header>
-
     <div class="content-container">
+
+        <div id="historia" class="content-view active">
+            <div class="home-quote">Verdade e olho no olho</div>
+            <div class="article">
+                <h2>Nossa História</h2>
+                <p>A Chilli Beans foi fundada em 1997 por <strong>Caito Maia</strong>. Tudo começou no underground do Mercado Mundo Mix, logo após o fim de sua banda de rock. Caito trazia óculos dos EUA para vender aos amigos e criou uma revolução no varejo com o self-service.</p>
+                <p>No <strong>Park Shopping Canoas</strong>, mantemos essa essência: vender <strong>estilo, design e atitude.</strong></p>
+            </div>
+        </div>
+
+        <div id="venda" class="content-view">
+            <div class="article">
+                <h2>Os Sete Passos da Venda</h2>
+                <div class="step-card"><h4>1. Preparação Diária</h4><p>Arrume-se e chegue no horário correto (até 30 min de antecedência).</p></div>
+                <div class="step-card"><h4>2. Abordagem</h4><p>Evite ficar sentado. Postura proativa. “Seja bem-vindo à Chilli Beans”.</p></div>
+                <div class="step-card"><h4>3. Sondagem</h4><p>Perguntas abertas. Quanto mais souber sobre o cliente, melhor será sua oferta.</p></div>
+                <div class="step-card"><h4>4. Demonstração (CVBA)</h4>
+                    <div class="cvba-box">
+                        <div class="cvba-item"><b>C - Característica:</b> Algo visível na peça.</div>
+                        <div class="cvba-item"><b>V - Vantagem:</b> O que essa característica traz de bom.</div>
+                        <div class="cvba-item"><b>B - Benefício:</b> O que essa vantagem proporciona.</div>
+                        <div class="cvba-item"><b>A - Atração:</b> Confirmar usando história e exclusividade.</div>
+                    </div>
+                </div>
+                <div class="step-card"><h4>5. Contorno de Objeções</h4><p>Escuta ativa e busca por soluções reais.</p></div>
+                <div class="step-card"><h4>6. Venda Adicional</h4><p>Sugira itens complementares (Limpadores, cases, correntes).</p></div>
+                <div class="step-card"><h4>7. Fechamento e Pós-Venda</h4><p>Seja direto. Cadastre com atenção. Envie mensagem de agradecimento e acompanhe a adaptação após 14 dias.</p></div>
+            </div>
+        </div>
+
         <div id="treinamentos" class="content-view">
             <div class="article">
                 <h2>Centro de Treinamento</h2>
-                <p>Materiais de apoio para consulta rápida e capacitação.</p>
-
                 <span class="category-title">👓 Ótica & Grau</span>
-                <div class="grid-buttons">
-                    <a href="#" class="btn-action">Ótica Básica (PDF)</a>
-                    <a href="#" class="btn-action">Tecnologias de Lentes</a>
-                    <a href="#" class="btn-action">Anamnese de Grau</a>
-                </div>
-
+                <div class="grid-buttons"><a href="#" class="btn-action">Ótica Básica</a><a href="#" class="btn-action">Tecnologias de Lentes</a></div>
                 <span class="category-title">🕶️ Solar</span>
-                <div class="grid-buttons">
-                    <a href="#" class="btn-action">Tipos de Lentes Solares</a>
-                    <a href="#" class="btn-action">Tendências & Shapes</a>
-                </div>
-
+                <div class="grid-buttons"><a href="#" class="btn-action">Lentes Solares</a><a href="#" class="btn-action">Tendências</a></div>
                 <span class="category-title">⌚ Relógios</span>
-                <div class="grid-buttons">
-                    <a href="#" class="btn-action">Mecanismos & Cuidados</a>
-                    <a href="#" class="btn-action">Troca de Pulseira</a>
-                </div>
+                <div class="grid-buttons"><a href="#" class="btn-action">Mecanismos</a><a href="#" class="btn-action">Troca de Pulseira</a></div>
+                <span class="category-title">💰 Vendas</span>
+                <div class="grid-buttons"><a href="#" class="btn-action">Objeções</a><a href="#" class="btn-action">Script Fechamento</a></div>
+            </div>
+        </div>
 
-                <span class="category-title">💰 Vendas & Negociação</span>
-                <div class="grid-buttons">
-                    <a href="#" class="btn-action">Contorno de Objeções</a>
-                    <a href="#" class="btn-action">Script de Fechamento</a>
+        <div id="rotina" class="content-view">
+            <div class="article">
+                <h2>Agenda e Rotina</h2>
+                <div class="planner-grid">
+                    <div class="day-card"><h4>Segunda</h4><ul><li>Pendências FDS</li><li><strong>CRM 360° (mín. 50)</strong></li><li>Estoques</li></ul></div>
+                    <div class="day-card"><h4>Terça/Quinta</h4><ul><li>Checklist de Loja</li><li>Metas Individuais</li><li>Unichilli</li></ul></div>
+                    <div class="day-card"><h4>Quarta</h4><ul><li>Relógios Garantia</li><li>SAC Relógio</li><li>Limpeza de nichos</li></ul></div>
+                    <div class="day-card"><h4>Sexta a Dom</h4><ul><li><strong>Foco na Pista</strong></li><li>Respeitar a Vez</li><li>Abordagem agressiva</li></ul></div>
                 </div>
             </div>
         </div>
 
+        <div id="links" class="content-view">
+            <div class="article">
+                <h2>Links Úteis</h2>
+                <div class="grid-buttons">
+                    <a href="https://erp.microvix.com.br/" target="_blank" class="btn-action">MICROVIX</a>
+                    <a href="https://unichilli.echo.timetoknow.com/login.html" target="_blank" class="btn-action">UNICHILLI</a>
+                    <a href="https://zeissone.com.br/" target="_blank" class="btn-action">ZEISS</a>
+                    <a href="https://indiolab.com/calculo-diametro/" target="_blank" class="btn-action">DIÂMETRO</a>
+                </div>
+            </div>
         </div>
+
+        <div id="tabelas" class="content-view">
+            <div class="article">
+                <h2>Cardápio de Lentes</h2>
+                <div class="grid-buttons">
+                    <a href="https://drive.google.com/drive/folders/1N1F8izwHo1kU-IfeY5zKU57DNJSimPeE" target="_blank" class="btn-action">ZEISS</a>
+                    <a href="https://drive.google.com/drive/folders/1sZ6WF9iG_-F4H6us1fVL1Ltg4KQ-aHwR" target="_blank" class="btn-action">CHILLIVISION</a>
+                </div>
+            </div>
+        </div>
+
+        <div id="sheet-view" class="content-view"><iframe id="sheet-iframe" src=""></iframe></div>
+        <div class="footer-quote">Se parar o sangue esfria</div>
+    </div>
 </main>
 
 <script>
     function openView(id) {
         document.querySelectorAll('.content-view').forEach(v => v.classList.remove('active'));
         document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
-        const target = document.getElementById(id);
-        if(target) target.classList.add('active');
+        document.getElementById(id).classList.add('active');
         const btn = document.querySelector(`[onclick*="${id}"]`);
         if(btn) btn.classList.add('active');
-        document.getElementById('current-title').innerText = btn ? btn.innerText.replace(/[^a-zA-Z ]/g, "").toUpperCase() : "HUB";
+        document.getElementById('current-title').innerText = btn.innerText.replace(/[^a-zA-Z ]/g, "").toUpperCase();
     }
     function openSheet(url) {
-        // [Lógica da planilha...]
+        document.querySelectorAll('.content-view').forEach(v => v.classList.remove('active'));
+        document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+        document.getElementById('sheet-iframe').src = url + "&rm=minimal";
+        document.getElementById('sheet-view').classList.add('active');
+        document.getElementById('current-title').innerText = "PLANILHA";
     }
 </script>
 </body>
