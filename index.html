@@ -13,7 +13,6 @@
 
         /* MENU LATERAL */
         nav { width: 280px; background: var(--gray); border-right: 3px solid var(--red); display: flex; flex-direction: column; flex-shrink: 0; overflow-y: auto; }
-        
         .logo-area { padding: 30px; text-align: center; border-bottom: 1px solid #333; }
         .logo-area img { max-width: 140px; height: auto; display: block; margin: 0 auto; }
 
@@ -30,16 +29,13 @@
         .content-view { display: none; padding: 30px; flex: 1; }
         .content-view.active { display: block; animation: fadeIn 0.4s ease; }
 
-        /* FRASES MANIFESTO */
         .home-quote { font-size: 2.2rem; font-weight: 700; color: var(--red); text-transform: uppercase; margin-bottom: 30px; line-height: 1; border-left: 8px solid var(--red); padding-left: 20px; }
         .footer-quote { text-align: center; padding: 40px 20px; color: #444; text-transform: uppercase; font-weight: 700; letter-spacing: 3px; font-size: 0.9rem; margin-top: auto; }
 
-        /* BOTÕES */
         .grid-buttons { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 15px; margin-top: 20px; }
         .btn-action { background: var(--gray); border: 2px solid #333; color: white; padding: 20px; text-decoration: none; border-radius: 12px; font-weight: 700; transition: 0.3s; text-align: center; cursor: pointer; display: flex; align-items: center; justify-content: center; border-bottom: 4px solid #333; }
         .btn-action:hover { border-color: var(--red); transform: translateY(-3px); background: #222; }
         
-        /* AGENDA CARDS */
         .planner-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
         .day-card { background: var(--gray); border-top: 5px solid var(--red); padding: 20px; border-radius: 8px; }
         .day-card h4 { color: var(--red); margin: 0 0 15px 0; text-transform: uppercase; border-bottom: 1px solid #333; padding-bottom: 10px; }
@@ -47,7 +43,6 @@
         .day-card li { margin-bottom: 8px; padding-left: 20px; position: relative; }
         .day-card li::before { content: '🌶️'; position: absolute; left: 0; font-size: 0.7rem; }
 
-        /* MOBILE */
         @media (max-width: 850px) {
             body { flex-direction: column; }
             nav { width: 100%; height: auto; border-right: none; border-bottom: 3px solid var(--red); flex-direction: row; display: block; overflow-x: auto; white-space: nowrap; position: sticky; top: 0; z-index: 100; }
@@ -65,17 +60,18 @@
 <body>
 
 <nav>
-    <div class="logo-area">
-        <img src="logo.png" alt="Chilli Beans">
-    </div>
+    <div class="logo-area"><img src="logo.png" alt="Chilli Beans"></div>
 
     <div class="menu-group">Principal</div>
     <div class="nav-link active" onclick="openView('historia')">🏠 Home</div>
     <div class="nav-link" onclick="openView('rotina')">📅 Agenda Vendedor</div>
     <div class="nav-link" onclick="openView('links')">🔗 Links Úteis</div>
+    
     <div class="menu-group">Gestão</div>
     <div class="nav-link" onclick="openSheet('https://docs.google.com/spreadsheets/d/e/2PACX-1vTjP1U4Bf1n2XNpBe8WCmWGduljeq0xTyHsytici9D_gul3dm0vor_1ZItm-yX8cQ315NT4VVNR2U4J/pubhtml?gid=1102116016&single=true')">🕒 Horários</div>
+    <div class="nav-link" onclick="openSheet('https://docs.google.com/spreadsheets/d/e/2PACX-1vTjP1U4Bf1n2XNpBe8WCmWGduljeq0xTyHsytici9D_gul3dm0vor_1ZItm-yX8cQ315NT4VVNR2U4J/pubhtml?gid=881852481&single=true')">🧽 Limpeza</div>
     <div class="nav-link" onclick="openSheet('https://docs.google.com/spreadsheets/d/e/2PACX-1vRPNuxbf2Tixewjj7Z-EXB3GuYOKHtEooSD2LJ4oI3ZRnium3M3BHof0l3I1Yo8k68pFuxxruZge-IE/pubhtml?gid=1534952399&single=true')">📊 Contagem</div>
+    
     <div class="menu-group">Produtos</div>
     <div class="nav-link" onclick="openView('tabelas')">👓 Tabelas de Grau</div>
 </nav>
@@ -88,67 +84,34 @@
             <div class="home-quote">Verdade e olho no olho</div>
             <div class="article">
                 <h2>Nossa Jornada</h2>
-                <p>A Chilli Beans nasceu em 1997, criada por <strong>Caito Maia</strong> no underground do <strong>Mercado Mundo Mix</strong>. O que começou como uma venda direta de óculos transformou-se em um movimento que desafiou o mercado óptico tradicional.</p>
+                <p>A Chilli Beans nasceu em 1997, criada por <strong>Caito Maia</strong> no underground do <strong>Mercado Mundo Mix</strong>. O que começou como uma venda direta desafiou o mercado óptico tradicional.</p>
+                <p>Fomos pioneiros no conceito de <strong>self-service óptico</strong>, permitindo que o cliente experimentasse o produto sem barreiras. Óculos deixaram de ser apenas saúde para serem <strong>acessórios de moda fundamentais.</strong></p>
                 
-                <p>Fomos pioneiros no conceito de <strong>self-service óptico</strong>, permitindo que o cliente tocasse, experimentasse e vivesse o produto sem as barreiras de balcões e chaves. Óculos deixaram de ser apenas saúde para se tornarem <strong>acessórios fundamentais de moda.</strong></p>
-                
-                <p>Hoje, somos a maior rede especializada em óculos e relógios da América Latina, sustentada por pilares que correm no nosso sangue:</p>
-                
+                <p>Hoje, somos a maior rede da América Latina, sustentada pelos nossos 5 pilares:</p>
                 <ul style="list-style: none; padding: 0; margin: 20px 0; color: #ccc;">
                     <li style="margin-bottom: 10px;"><strong style="color: var(--red);">⚡ MODA:</strong> Tendências globais com lançamentos semanais.</li>
                     <li style="margin-bottom: 10px;"><strong style="color: var(--red);">🎸 MÚSICA:</strong> A trilha sonora da nossa alma e collabs épicas.</li>
                     <li style="margin-bottom: 10px;"><strong style="color: var(--red);">🎨 ARTE:</strong> Design como forma de expressão e conexão.</li>
-                    <li style="margin-bottom: 10px;"><strong style="color: var(--red);">🕹️ GEEK:</strong> O universo gamer e pop transformado em coleções exclusivas.</li>
+                    <li style="margin-bottom: 10px;"><strong style="color: var(--red);">🕹️ GEEK:</strong> O universo gamer e pop transformado em coleções.</li>
+                    <li style="margin-bottom: 10px;"><strong style="color: var(--red);">🛹 ESPORTE:</strong> Adrenalina e performance correndo nas veias.</li>
                 </ul>
-
-                <p>Aqui no <strong>Park Shopping Canoas</strong>, levamos essa herança a sério. Não vendemos apenas lentes; entregamos estilo e atitude.</p>
+                <p>Aqui no <strong>Park Shopping Canoas</strong>, entregamos estilo e atitude em cada atendimento.</p>
             </div>
         </div>
 
         <div id="rotina" class="content-view">
-            <div class="article">
-                <h2>Agenda Semanal</h2>
-                <div class="planner-grid">
-                    <div class="day-card"><h4>Segunda</h4><ul><li>Revisar tarefas fds</li><li><strong>CRM 360° (mín. 50)</strong></li></ul></div>
-                    <div class="day-card"><h4>Terça/Quinta</h4><ul><li>Checklist / Meta</li><li>Unichilli</li></ul></div>
-                    <div class="day-card"><h4>Quarta</h4><ul><li>Relógios conserto</li><li>SAC relógio</li></ul></div>
-                    <div class="day-card"><h4>Sábado/Dom</h4><ul><li><strong>Foco na pista</strong></li><li>Lugar na vez</li></ul></div>
-                </div>
-            </div>
+            <div class="article"><h2>Agenda Semanal</h2><div class="planner-grid"><div class="day-card"><h4>Segunda</h4><ul><li>Revisar tarefas fds</li><li><strong>CRM 360° (mín. 50)</strong></li></ul></div><div class="day-card"><h4>Terça/Quinta</h4><ul><li>Checklist / Meta</li><li>Unichilli</li></ul></div><div class="day-card"><h4>Quarta</h4><ul><li>Relógios conserto</li><li>SAC relógio</li></ul></div><div class="day-card"><h4>Sábado/Dom</h4><ul><li><strong>Foco na pista</strong></li><li>Lugar na vez</li></ul></div></div></div>
         </div>
 
         <div id="links" class="content-view">
-            <div class="article">
-                <h2>Links Úteis</h2>
-                <div class="grid-buttons">
-                    <a href="https://erp.microvix.com.br/" target="_blank" class="btn-action">SISTEMA MICROVIX</a>
-                    <a href="https://unichilli.echo.timetoknow.com/login.html" target="_blank" class="btn-action">🎓 UNICHILLI</a>
-                    <a href="https://zeissone.com.br/" target="_blank" class="btn-action">🔭 EMBAIXADOR ZEISS</a>
-                    <a href="https://nova.extranetchillibeans.com.br/login" target="_blank" class="btn-action">EXTRANET CHILLI</a>
-                    <a href="https://indiolab.com/calculo-diametro/" target="_blank" class="btn-action">📏 CALC. DIÂMETRO</a>
-                    <a href="https://indiolab.com/calculo-bordas/" target="_blank" class="btn-action">⚖️ CALC. BORDAS</a>
-                    <a href="https://vantagens.essilorconecta.com.br/login" target="_blank" class="btn-action">💎 ESSILOR CONECTA</a>
-                </div>
-            </div>
+            <div class="article"><h2>Links Úteis</h2><div class="grid-buttons"><a href="https://erp.microvix.com.br/" target="_blank" class="btn-action">SISTEMA MICROVIX</a><a href="https://unichilli.echo.timetoknow.com/login.html" target="_blank" class="btn-action">🎓 UNICHILLI</a><a href="https://zeissone.com.br/" target="_blank" class="btn-action">🔭 EMBAIXADOR ZEISS</a><a href="https://nova.extranetchillibeans.com.br/login" target="_blank" class="btn-action">EXTRANET CHILLI</a><a href="https://indiolab.com/calculo-diametro/" target="_blank" class="btn-action">📏 CALC. DIÂMETRO</a><a href="https://indiolab.com/calculo-bordas/" target="_blank" class="btn-action">⚖️ CALC. BORDAS</a><a href="https://vantagens.essilorconecta.com.br/login" target="_blank" class="btn-action">💎 ESSILOR CONECTA</a><a href="https://www.instagram.com/chillibeansparkshoppingcanoas" target="_blank" class="btn-action">📸 INSTAGRAM</a></div></div>
         </div>
 
         <div id="tabelas" class="content-view">
-            <div class="article">
-                <h2>Cardápio de Lentes</h2>
-                <p>Selecione o Laboratório para abrir as tabelas no Google Drive:</p>
-                <div class="grid-buttons">
-                    <a href="https://drive.google.com/drive/folders/1N1F8izwHo1kU-IfeY5zKU57DNJSimPeE?usp=sharing" target="_blank" class="btn-action">ZEISS</a>
-                    <a href="https://drive.google.com/file/d/19QWbii-ignlsxgpDG5mss1gzxAKls4Hk/view?usp=sharing" target="_blank" class="btn-action">ESSILOR</a>
-                    <a href="https://drive.google.com/drive/folders/1sZ6WF9iG_-F4H6us1fVL1Ltg4KQ-aHwR?usp=sharing" target="_blank" class="btn-action">CHILLIVISION</a>
-                    <a href="https://drive.google.com/file/d/1uWJ3gHlKt44FOP3Ocos882D5RPovA9M4/view?usp=sharing" target="_blank" class="btn-action">HOYA</a>
-                </div>
-            </div>
+            <div class="article"><h2>Cardápio de Lentes</h2><div class="grid-buttons"><a href="https://drive.google.com/drive/folders/1N1F8izwHo1kU-IfeY5zKU57DNJSimPeE?usp=sharing" target="_blank" class="btn-action">ZEISS</a><a href="https://drive.google.com/file/d/19QWbii-ignlsxgpDG5mss1gzxAKls4Hk/view?usp=sharing" target="_blank" class="btn-action">ESSILOR</a><a href="https://drive.google.com/drive/folders/1sZ6WF9iG_-F4H6us1fVL1Ltg4KQ-aHwR?usp=sharing" target="_blank" class="btn-action">CHILLIVISION</a><a href="https://drive.google.com/file/d/1uWJ3gHlKt44FOP3Ocos882D5RPovA9M4/view?usp=sharing" target="_blank" class="btn-action">HOYA</a></div></div>
         </div>
 
-        <div id="sheet-view" class="content-view">
-            <iframe id="sheet-iframe" src=""></iframe>
-        </div>
-
+        <div id="sheet-view" class="content-view"><iframe id="sheet-iframe" src=""></iframe></div>
         <div class="footer-quote">Se parar o sangue esfria</div>
     </div>
 </main>
@@ -160,7 +123,7 @@
         document.getElementById(id).classList.add('active');
         const btn = document.querySelector(`[onclick*="${id}"]`);
         if(btn) btn.classList.add('active');
-        document.getElementById('current-title').innerText = btn.innerText.replace('🏠 ', '').replace('📅 ', '').replace('🔗 ', '').replace('👓 ', '').toUpperCase();
+        document.getElementById('current-title').innerText = btn.innerText.replace(/[^a-zA-Z ]/g, "").toUpperCase();
     }
     function openSheet(url) {
         document.querySelectorAll('.content-view').forEach(v => v.classList.remove('active'));
