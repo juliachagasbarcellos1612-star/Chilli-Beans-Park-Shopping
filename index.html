@@ -11,62 +11,72 @@
         * { box-sizing: border-box; }
         body { font-family: 'Rubik', sans-serif; margin: 0; display: flex; background: var(--dark); color: var(--text); height: 100vh; overflow: hidden; }
 
-        /* MENU LATERAL (DESKTOP) */
-        nav { width: 280px; background: var(--gray); border-right: 3px solid var(--red); display: flex; flex-direction: column; flex-shrink: 0; overflow-y: auto; transition: 0.3s; }
-        .logo-area { padding: 30px; text-align: center; border-bottom: 1px solid #333; font-weight: 700; color: var(--red); font-size: 1.2rem; letter-spacing: 1px; }
+        /* MENU LATERAL */
+        nav { width: 280px; background: var(--gray); border-right: 3px solid var(--red); display: flex; flex-direction: column; flex-shrink: 0; overflow-y: auto; }
+        
+        /* ÁREA DA LOGO (ATUALIZADA) */
+        .logo-area { padding: 30px; text-align: center; border-bottom: 1px solid #333; }
+        .logo-area img { max-width: 140px; height: auto; display: block; margin: 0 auto; }
+
         .menu-group { padding: 20px 25px 5px; font-size: 0.7rem; color: #888; text-transform: uppercase; letter-spacing: 2px; }
-        .nav-link { padding: 15px 25px; cursor: pointer; border-bottom: 1px solid #2a2a2a; font-size: 0.85rem; display: flex; align-items: center; gap: 12px; transition: 0.2s; }
+        .nav-link { padding: 15px 25px; cursor: pointer; border-bottom: 1px solid #2a2a2a; font-size: 0.85rem; display: flex; align-items: center; gap: 12px; transition: 0.2s; text-decoration: none; color: white; }
         .nav-link:hover { background: #2a2a2a; color: var(--red); padding-left: 35px; }
         .nav-link.active { background: var(--red); color: white; }
 
         /* ÁREA PRINCIPAL */
         main { flex: 1; display: flex; flex-direction: column; background: var(--dark); overflow: hidden; }
         header { padding: 18px 25px; background: #000; border-bottom: 1px solid #333; display: flex; justify-content: space-between; align-items: center; font-weight: 700; text-transform: uppercase; font-size: 0.8rem; }
-        .content-view { display: none; padding: 30px; overflow-y: auto; height: 100%; }
+        
+        .content-container { flex: 1; overflow-y: auto; display: flex; flex-direction: column; }
+        .content-view { display: none; padding: 30px; flex: 1; }
         .content-view.active { display: block; animation: fadeIn 0.4s ease; }
 
-        /* BOTÕES DE LINKS E PDFS (PAINEL) */
-        .grid-buttons { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-top: 20px; }
-        .btn-action { background: var(--gray); border: 2px solid #333; color: white; padding: 20px; text-decoration: none; border-radius: 12px; font-weight: 700; transition: 0.3s; text-align: center; cursor: pointer; font-size: 0.85rem; border-bottom: 4px solid #333; }
-        .btn-action:hover { border-color: var(--red); transform: translateY(-3px); background: #222; }
-        .btn-pdf { background: #333; border-bottom-color: var(--red); }
+        /* FRASES MANIFESTO */
+        .home-quote { font-size: 2.2rem; font-weight: 700; color: var(--red); text-transform: uppercase; margin-bottom: 30px; line-height: 1; border-left: 8px solid var(--red); padding-left: 20px; }
+        .footer-quote { text-align: center; padding: 40px 20px; color: #444; text-transform: uppercase; font-weight: 700; letter-spacing: 3px; font-size: 0.9rem; margin-top: auto; }
 
-        /* AGENDA PLANNER CARDS */
+        /* BOTÕES */
+        .grid-buttons { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 15px; margin-top: 20px; }
+        .btn-action { background: var(--gray); border: 2px solid #333; color: white; padding: 20px; text-decoration: none; border-radius: 12px; font-weight: 700; transition: 0.3s; text-align: center; cursor: pointer; display: flex; align-items: center; justify-content: center; border-bottom: 4px solid #333; }
+        .btn-action:hover { border-color: var(--red); transform: translateY(-3px); background: #222; }
+        
+        /* AGENDA CARDS */
         .planner-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
         .day-card { background: var(--gray); border-top: 5px solid var(--red); padding: 20px; border-radius: 8px; }
         .day-card h4 { color: var(--red); margin: 0 0 15px 0; text-transform: uppercase; border-bottom: 1px solid #333; padding-bottom: 10px; }
-        .day-card ul { padding: 0; list-style: none; font-size: 0.85rem; color: #ccc; }
+        .day-card ul { padding: 0; list-style: none; font-size: 0.85rem; color: #ccc; line-height: 1.6; }
         .day-card li { margin-bottom: 8px; padding-left: 20px; position: relative; }
         .day-card li::before { content: '🌶️'; position: absolute; left: 0; font-size: 0.7rem; }
 
         /* RESPONSIVIDADE (MOBILE) */
         @media (max-width: 850px) {
             body { flex-direction: column; }
-            nav { width: 100%; height: auto; border-right: none; border-bottom: 3px solid var(--red); flex-direction: row; display: block; overflow-x: auto; white-space: nowrap; position: sticky; top: 0; }
-            .logo-area, .menu-group { display: none; }
+            nav { width: 100%; height: auto; border-right: none; border-bottom: 3px solid var(--red); flex-direction: row; display: block; overflow-x: auto; white-space: nowrap; position: sticky; top: 0; z-index: 100; }
+            .logo-area { display: none; } /* Esconde logo no mobile p/ poupar espaço */
+            .menu-group { display: none; }
             .nav-link { display: inline-flex; padding: 15px 20px; border-bottom: none; border-right: 1px solid #333; }
-            .content-view { padding: 20px; padding-bottom: 80px; }
-            .planner-grid { grid-template-columns: 1fr; }
-            iframe { height: 70vh !important; }
+            .content-view { padding: 20px; }
+            .home-quote { font-size: 1.6rem; }
         }
 
-        .article h2 { color: var(--red); border-left: 5px solid var(--red); padding-left: 15px; text-transform: uppercase; margin-bottom: 25px; }
-        iframe { width: 100%; height: 80vh; border: none; border-radius: 12px; background: white; margin-top: 20px; }
-
+        .article h2 { color: var(--red); text-transform: uppercase; margin-bottom: 20px; font-size: 1.2rem; }
+        iframe { width: 100%; height: 85vh; border: none; border-radius: 12px; background: white; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
 <body>
 
 <nav>
-    <div class="logo-area">CHILLI CANOAS</div>
-    <div class="menu-group">Institucional</div>
-    <div class="nav-link active" onclick="openView('historia')">📖 História</div>
+    <div class="logo-area">
+        <img src="logo.png" alt="Chilli Beans">
+    </div>
+
+    <div class="menu-group">Principal</div>
+    <div class="nav-link active" onclick="openView('historia')">🏠 Home</div>
     <div class="nav-link" onclick="openView('rotina')">📅 Agenda Vendedor</div>
     <div class="nav-link" onclick="openView('links')">🔗 Links Úteis</div>
-    <div class="menu-group">Escalas</div>
+    <div class="menu-group">Gestão</div>
     <div class="nav-link" onclick="openSheet('https://docs.google.com/spreadsheets/d/e/2PACX-1vTjP1U4Bf1n2XNpBe8WCmWGduljeq0xTyHsytici9D_gul3dm0vor_1ZItm-yX8cQ315NT4VVNR2U4J/pubhtml?gid=1102116016&single=true')">🕒 Horários</div>
-    <div class="nav-link" onclick="openSheet('https://docs.google.com/spreadsheets/d/e/2PACX-1vTjP1U4Bf1n2XNpBe8WCmWGduljeq0xTyHsytici9D_gul3dm0vor_1ZItm-yX8cQ315NT4VVNR2U4J/pubhtml?gid=881852481&single=true')">🧽 Limpeza</div>
     <div class="nav-link" onclick="openSheet('https://docs.google.com/spreadsheets/d/e/2PACX-1vRPNuxbf2Tixewjj7Z-EXB3GuYOKHtEooSD2LJ4oI3ZRnium3M3BHof0l3I1Yo8k68pFuxxruZge-IE/pubhtml?gid=1534952399&single=true')">📊 Contagem</div>
     <div class="menu-group">Produtos</div>
     <div class="nav-link" onclick="openView('tabelas')">👓 Tabelas de Grau</div>
@@ -75,99 +85,63 @@
 <main>
     <header><span id="current-title">HUB DE GESTÃO</span> 🌶️</header>
 
-    <div id="historia" class="content-view active">
-        <div class="article">
-            <h2>Nossa História</h2>
-            <p>A Chilli Beans nasceu em 1997, criada por <strong>Caito Maia</strong> — e, diferente do que muita gente imagina, ela não começou no shopping… começou no underground.</p>
-            <p>Antes da marca existir como loja, o Caito vendia óculos em lugares super alternativos como o <strong>Mercado Mundo Mix</strong>, que era um ponto de encontro de criatividade, música e moda independente nos anos 90.</p>
-            <p>Foi ali que surgiu a essência da marca: <strong>Ousada, Diferente e Conectada com arte e comportamento.</strong></p>
-            <p>A Chilli Beans nasceu com essa pegada: <strong>Alternativa, Urbana e quase “anti-padrão”.</strong></p>
-            <p>Sempre focamos nesses cinco pilares: <strong>Moda, Música, Arte, Geek e Esporte.</strong></p>
+    <div class="content-container">
+        <div id="historia" class="content-view active">
+            <div class="home-quote">Verdade e olho no olho</div>
+            <div class="article">
+                <h2>Nossa História</h2>
+                <p>A Chilli Beans nasceu em 1997, criada por <strong>Caito Maia</strong> no underground do Mercado Mundo Mix.</p>
+                <p>Essência: <strong>Ousada, Diferente e Conectada com arte e comportamento.</strong></p>
+                <p>Pilares: <strong>Moda, Música, Arte, Geek e Esporte.</strong></p>
+            </div>
         </div>
-    </div>
 
-    <div id="rotina" class="content-view">
-        <div class="article">
-            <h2>Agenda Vendedor Semanal</h2>
-            <div class="planner-grid">
-                <div class="day-card">
-                    <h4>Segunda (SEG)</h4>
-                    <ul>
-                        <li>Revisar tarefas fds</li>
-                        <li>Olhar OS p/ Meta</li>
-                        <li>Programar posts Instagram c/ colegas</li>
-                        <li><strong>CRM 360° (mín. 50 contatos)</strong></li>
-                    </ul>
-                </div>
-                <div class="day-card">
-                    <h4>Terça (TER)</h4>
-                    <ul>
-                        <li>Fazer checklist do dia / Meta diária</li>
-                        <li>Limpar display / flanelar óculos</li>
-                        <li>Responsável p/ notas: dar entrada</li>
-                    </ul>
-                </div>
-                <div class="day-card">
-                    <h4>Quarta (QUA)</h4>
-                    <ul>
-                        <li>Checklist / Meta diária / Flanelar</li>
-                        <li>Vendedor p/ relógios: mandar p/ conserto</li>
-                        <li>Pendências de SAC de relógio</li>
-                    </ul>
-                </div>
-                <div class="day-card">
-                    <h4>Quinta / Sexta</h4>
-                    <ul>
-                        <li>Checklist / Meta diária / Flanelar</li>
-                        <li><strong>CRM 360° (mín. 50 contatos)</strong></li>
-                        <li>Postagens p/ Instagram</li>
-                    </ul>
-                </div>
-                <div class="day-card">
-                    <h4>Sábado / Domingo</h4>
-                    <ul>
-                        <li>Checklist / Meta diária</li>
-                        <li>Limpar display / flanelar óculos</li>
-                        <li><strong>Foco total na pista (vendas)</strong></li>
-                        <li>Cuidar seu lugar na vez</li>
-                    </ul>
+        <div id="rotina" class="content-view">
+            <div class="article">
+                <h2>Agenda Semanal</h2>
+                <div class="planner-grid">
+                    <div class="day-card"><h4>Segunda</h4><ul><li>Revisar tarefas fds</li><li><strong>CRM 360° (mín. 50)</strong></li></ul></div>
+                    <div class="day-card"><h4>Terça/Quinta</h4><ul><li>Checklist / Meta</li><li>Unichilli</li></ul></div>
+                    <div class="day-card"><h4>Quarta</h4><ul><li>Relógios conserto</li><li>SAC relógio</li></ul></div>
+                    <div class="day-card"><h4>Sábado/Dom</h4><ul><li><strong>Foco na pista</strong></li><li>Lugar na vez</li></ul></div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <div id="links" class="content-view">
-        <div class="article">
-            <h2>Links Importantes</h2>
-            <div class="grid-buttons">
-                <a href="https://erp.microvix.com.br/" target="_blank" class="btn-action">SISTEMA MICROVIX</a>
-                <a href="https://unichilli.echo.timetoknow.com/login.html" target="_blank" class="btn-action">🎓 UNICHILLI</a>
-                <a href="https://zeissone.com.br/" target="_blank" class="btn-action">🔭 EMBAIXADOR ZEISS</a>
-                <a href="https://nova.extranetchillibeans.com.br/login" target="_blank" class="btn-action">EXTRANET CHILLI BEANS</a>
-                <a href="https://indiolab.com/calculo-diametro/" target="_blank" class="btn-action">📏 CALC. DIÂMETRO LENTE</a>
-                <a href="https://indiolab.com/calculo-bordas/" target="_blank" class="btn-action">⚖️ CALC. BORDAS E PESO</a>
-                <a href="https://vantagens.essilorconecta.com.br/login" target="_blank" class="btn-action">💎 ESSILOR CONECTA</a>
-                <a href="https://www.instagram.com/chillibeansparkshoppingcanoas" target="_blank" class="btn-action">📸 INSTAGRAM LOJA</a>
+        <div id="links" class="content-view">
+            <div class="article">
+                <h2>Links Úteis</h2>
+                <div class="grid-buttons">
+                    <a href="https://erp.microvix.com.br/" target="_blank" class="btn-action">SISTEMA MICROVIX</a>
+                    <a href="https://unichilli.echo.timetoknow.com/login.html" target="_blank" class="btn-action">🎓 UNICHILLI</a>
+                    <a href="https://zeissone.com.br/" target="_blank" class="btn-action">🔭 EMBAIXADOR ZEISS</a>
+                    <a href="https://nova.extranetchillibeans.com.br/login" target="_blank" class="btn-action">EXTRANET CHILLI</a>
+                    <a href="https://indiolab.com/calculo-diametro/" target="_blank" class="btn-action">📏 CALC. DIÂMETRO</a>
+                    <a href="https://indiolab.com/calculo-bordas/" target="_blank" class="btn-action">⚖️ CALC. BORDAS</a>
+                    <a href="https://vantagens.essilorconecta.com.br/login" target="_blank" class="btn-action">💎 ESSILOR CONECTA</a>
+                    <a href="https://www.instagram.com/chillibeansparkshoppingcanoas" target="_blank" class="btn-action">📸 INSTAGRAM</a>
+                </div>
             </div>
         </div>
-    </div>
 
-    <div id="tabelas" class="content-view">
-        <div class="article">
-            <h2>Cardápio de Lentes</h2>
-            <p>Selecione o Laboratório para visualizar as tabelas (Suba os PDFs no GitHub p/ ativar):</p>
-            <div class="grid-buttons">
-                <div class="btn-action btn-pdf" onclick="loadPDF('zeiss.pdf')">ZEISS</div>
-                <div class="btn-action btn-pdf" onclick="loadPDF('essilor.pdf')">ESSILOR</div>
-                <div class="btn-action btn-pdf" onclick="loadPDF('chillivision.pdf')">CHILLIVISION</div>
-                <div class="btn-action btn-pdf" onclick="loadPDF('hoya.pdf')">HOYA</div>
+        <div id="tabelas" class="content-view">
+            <div class="article">
+                <h2>Cardápio de Lentes</h2>
+                <p>Selecione o Laboratório para abrir as tabelas no Google Drive:</p>
+                <div class="grid-buttons">
+                    <a href="https://drive.google.com/drive/folders/1N1F8izwHo1kU-IfeY5zKU57DNJSimPeE?usp=sharing" target="_blank" class="btn-action">ZEISS</a>
+                    <a href="https://drive.google.com/file/d/19QWbii-ignlsxgpDG5mss1gzxAKls4Hk/view?usp=sharing" target="_blank" class="btn-action">ESSILOR</a>
+                    <a href="https://drive.google.com/drive/folders/1sZ6WF9iG_-F4H6us1fVL1Ltg4KQ-aHwR?usp=sharing" target="_blank" class="btn-action">CHILLIVISION</a>
+                    <a href="https://drive.google.com/file/d/1uWJ3gHlKt44FOP3Ocos882D5RPovA9M4/view?usp=sharing" target="_blank" class="btn-action">HOYA</a>
+                </div>
             </div>
-            <iframe id="pdf-v" src="" style="display: none;"></iframe>
         </div>
-    </div>
 
-    <div id="sheet-view" class="content-view">
-        <iframe id="sheet-iframe" src=""></iframe>
+        <div id="sheet-view" class="content-view">
+            <iframe id="sheet-iframe" src=""></iframe>
+        </div>
+
+        <div class="footer-quote">Se parar o sangue esfria</div>
     </div>
 </main>
 
@@ -176,25 +150,17 @@
         document.querySelectorAll('.content-view').forEach(v => v.classList.remove('active'));
         document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
         document.getElementById(id).classList.add('active');
-        const btn = document.querySelector(`[onclick="openView('${id}')"]`);
+        const btn = document.querySelector(`[onclick*="${id}"]`);
         if(btn) btn.classList.add('active');
-        document.getElementById('current-title').innerText = btn.innerText.toUpperCase();
+        document.getElementById('current-title').innerText = btn.innerText.replace('🏠 ', '').replace('📅 ', '').replace('🔗 ', '').replace('👓 ', '').toUpperCase();
     }
-    
     function openSheet(url) {
         document.querySelectorAll('.content-view').forEach(v => v.classList.remove('active'));
         document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
         document.getElementById('sheet-iframe').src = url + "&rm=minimal";
         document.getElementById('sheet-view').classList.add('active');
-        document.getElementById('current-title').innerText = "PLANILHA REAL TIME";
-    }
-
-    function loadPDF(file) {
-        const viewer = document.getElementById('pdf-v');
-        viewer.src = file;
-        viewer.style.display = "block";
+        document.getElementById('current-title').innerText = "PLANILHA";
     }
 </script>
-
 </body>
 </html>
