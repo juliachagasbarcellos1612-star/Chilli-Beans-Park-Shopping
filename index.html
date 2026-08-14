@@ -11,89 +11,329 @@
     <style>
         :root { 
             --red: #e31b24; 
+            --red-hover: #c4121a;
             --bg-content: #f4f6f8; 
             --sidebar: #000000; 
             --white: #ffffff;
+            --text-dark: #212529;
+            --text-muted: #6c757d;
         }
-        * { box-sizing: border-box; }
-        body { font-family: 'Rubik', sans-serif; margin: 0; display: flex; background: var(--bg-content); height: 100vh; overflow: hidden; }
 
-        nav { width: 280px; background: var(--sidebar); border-right: 4px solid var(--red); display: flex; flex-direction: column; flex-shrink: 0; overflow-y: auto; }
-        .logo-area { padding: 30px; text-align: center; border-bottom: 1px solid #333; }
-        .logo-area img { max-width: 140px; filter: brightness(0) invert(1); margin: 0 auto; display: block; }
+        * { 
+            box-sizing: border-box; 
+            margin: 0;
+            padding: 0;
+        }
 
-        .menu-group { padding: 20px 25px 5px; font-size: 0.7rem; color: #888; text-transform: uppercase; letter-spacing: 2px; }
-        .nav-link { padding: 15px 25px; cursor: pointer; border-bottom: 1px solid #222; font-size: 0.85rem; display: flex; align-items: center; gap: 12px; transition: 0.2s; text-decoration: none; color: #eee; }
-        .nav-link:hover { background: #1a1a1a; color: var(--red); padding-left: 35px; }
-        .nav-link.active { background: var(--red); color: white; }
+        body { 
+            font-family: 'Rubik', sans-serif; 
+            display: flex; 
+            background: var(--bg-content); 
+            height: 100vh; 
+            overflow: hidden; 
+            color: var(--text-dark);
+        }
 
-        main { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
-        header { padding: 18px 25px; background: var(--white); border-bottom: 1px solid #dee2e6; display: flex; justify-content: space-between; align-items: center; font-weight: 700; text-transform: uppercase; font-size: 0.8rem; }
-        
-        .content-container { flex: 1; overflow-y: auto; padding: 30px; }
-        .content-view { display: none; }
-        .content-view.active { display: block; animation: fadeIn 0.4s ease; }
+        /* NAVEGAÇÃO / SIDEBAR */
+        nav { 
+            width: 280px; 
+            background: var(--sidebar); 
+            border-right: 4px solid var(--red); 
+            display: flex; 
+            flex-direction: column; 
+            flex-shrink: 0; 
+            overflow-y: auto; 
+            z-index: 10;
+        }
 
-        .home-quote { font-size: 2.2rem; font-weight: 700; color: var(--red); text-transform: uppercase; margin-bottom: 30px; border-left: 8px solid var(--red); padding-left: 20px; }
-        
-        /* CARDS E BOTÕES */
-        .step-card { background: var(--white); border-left: 5px solid var(--red); padding: 20px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); margin-bottom: 20px; }
-        .step-card h4 { color: var(--red); margin: 0 0 10px 0; text-transform: uppercase; }
-        
-        .cvba-box { background: #fff5f5; border: 1px dashed var(--red); padding: 15px; border-radius: 8px; margin-top: 10px; font-size: 0.85rem; }
-        
-        .grid-buttons { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 15px; margin-top: 20px; }
-        .btn-action { background: var(--white); border: 1px solid #dee2e6; color: #000; padding: 20px; text-decoration: none; border-radius: 12px; font-weight: 700; transition: 0.3s; text-align: center; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
-        .btn-action:hover { border-color: var(--red); color: var(--red); transform: translateY(-3px); }
+        .logo-area { 
+            padding: 30px 20px; 
+            text-align: center; 
+            border-bottom: 1px solid #222; 
+        }
 
-        .day-card { background: var(--white); border-top: 5px solid var(--red); padding: 20px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
-        .day-card h4 { color: var(--red); text-transform: uppercase; margin-bottom: 15px; border-bottom: 1px solid #f1f1f1; padding-bottom: 10px; }
-        .day-card ul { padding: 0; list-style: none; font-size: 0.85rem; line-height: 1.6; color: #555; }
-        .day-card li::before { content: '🌶️ '; }
+        .logo-area img { 
+            max-width: 140px; 
+            filter: brightness(0) invert(1); 
+            margin: 0 auto; 
+            display: block; 
+        }
 
+        .menu-group { 
+            padding: 20px 25px 8px; 
+            font-size: 0.7rem; 
+            color: #777; 
+            text-transform: uppercase; 
+            letter-spacing: 1.5px; 
+            font-weight: 700;
+        }
+
+        .nav-link { 
+            padding: 14px 25px; 
+            cursor: pointer; 
+            border-bottom: 1px solid #1a1a1a; 
+            font-size: 0.88rem; 
+            display: flex; 
+            align-items: center; 
+            gap: 12px; 
+            transition: all 0.2s ease; 
+            text-decoration: none; 
+            color: #ddd; 
+            font-weight: 500;
+        }
+
+        .nav-link:hover { 
+            background: #111; 
+            color: var(--red); 
+            padding-left: 30px; 
+        }
+
+        .nav-link.active { 
+            background: var(--red); 
+            color: var(--white); 
+            font-weight: 700;
+        }
+
+        /* CONTEÚDO PRINCIPAL */
+        main { 
+            flex: 1; 
+            display: flex; 
+            flex-direction: column; 
+            overflow: hidden; 
+        }
+
+        header { 
+            padding: 18px 30px; 
+            background: var(--white); 
+            border-bottom: 1px solid #dee2e6; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            font-weight: 700; 
+            text-transform: uppercase; 
+            font-size: 0.85rem; 
+            letter-spacing: 0.5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+        }
+
+        .content-container { 
+            flex: 1; 
+            overflow-y: auto; 
+            padding: 30px; 
+        }
+
+        .content-view { 
+            display: none; 
+        }
+
+        .content-view.active { 
+            display: block; 
+            animation: fadeIn 0.3s ease-in-out; 
+        }
+
+        /* HOME / HISTÓRIA */
+        .home-quote { 
+            font-size: 2rem; 
+            font-weight: 700; 
+            color: var(--red); 
+            text-transform: uppercase; 
+            margin-bottom: 20px; 
+            border-left: 6px solid var(--red); 
+            padding-left: 18px; 
+            line-height: 1.2;
+        }
+
+        /* CARDS E CONTEÚDO */
+        .step-card { 
+            background: var(--white); 
+            border-left: 5px solid var(--red); 
+            padding: 20px; 
+            border-radius: 8px; 
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04); 
+            margin-bottom: 16px; 
+        }
+
+        .step-card h4 { 
+            color: var(--red); 
+            margin-bottom: 8px; 
+            text-transform: uppercase; 
+            font-size: 1rem;
+        }
+
+        .cvba-box { 
+            background: #fff5f5; 
+            border: 1px dashed var(--red); 
+            padding: 15px; 
+            border-radius: 8px; 
+            margin-top: 10px; 
+            font-size: 0.9rem; 
+            line-height: 1.5;
+        }
+
+        /* GRID DE BOTÕES E CARDS */
+        .grid-buttons { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); 
+            gap: 16px; 
+            margin-top: 20px; 
+        }
+
+        .btn-action { 
+            background: var(--white); 
+            border: 1px solid #e2e8f0; 
+            color: var(--text-dark); 
+            padding: 20px; 
+            text-decoration: none; 
+            border-radius: 10px; 
+            font-weight: 700; 
+            transition: all 0.25s ease; 
+            text-align: center; 
+            box-shadow: 0 2px 4px rgba(0,0,0,0.03); 
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85rem;
+        }
+
+        .btn-action:hover { 
+            border-color: var(--red); 
+            color: var(--red); 
+            transform: translateY(-3px); 
+            box-shadow: 0 4px 12px rgba(227, 27, 36, 0.12);
+        }
+
+        .day-card { 
+            background: var(--white); 
+            border-top: 4px solid var(--red); 
+            padding: 20px; 
+            border-radius: 8px; 
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04); 
+        }
+
+        .day-card h4 { 
+            color: var(--red); 
+            text-transform: uppercase; 
+            margin-bottom: 12px; 
+            border-bottom: 1px solid #f1f1f1; 
+            padding-bottom: 8px; 
+            font-size: 0.95rem;
+        }
+
+        .day-card ul { 
+            padding: 0; 
+            list-style: none; 
+            font-size: 0.88rem; 
+            line-height: 1.7; 
+            color: #444; 
+        }
+
+        .day-card li::before { 
+            content: '🌶️ '; 
+            margin-right: 4px;
+        }
+
+        /* IFRAME PLANILHAS */
+        #sheet-view {
+            height: 100%;
+        }
+
+        iframe { 
+            width: 100%; 
+            height: calc(100vh - 120px); 
+            border: 1px solid #dee2e6; 
+            border-radius: 10px; 
+            background: var(--white);
+        }
+
+        /* RESPONSIVIDADE MOBILE */
         @media (max-width: 850px) {
-            body { flex-direction: column; }
-            nav { width: 100%; height: auto; flex-direction: row; border-right: none; border-bottom: 3px solid var(--red); white-space: nowrap; position: sticky; top: 0; z-index: 100; }
-            .logo-area, .menu-group { display: none; }
-            .nav-link { display: inline-flex; border-bottom: none; border-right: 1px solid #333; }
+            body { 
+                flex-direction: column; 
+            }
+
+            nav { 
+                width: 100%; 
+                height: auto; 
+                flex-direction: row; 
+                border-right: none; 
+                border-bottom: 3px solid var(--red); 
+                white-space: nowrap; 
+                overflow-x: auto; 
+                position: sticky; 
+                top: 0; 
+                -webkit-overflow-scrolling: touch;
+            }
+
+            .logo-area, .menu-group { 
+                display: none; 
+            }
+
+            .nav-link { 
+                display: inline-flex; 
+                border-bottom: none; 
+                border-right: 1px solid #222; 
+                padding: 12px 18px;
+                font-size: 0.8rem;
+            }
+
+            .nav-link:hover { 
+                padding-left: 18px; 
+            }
+
+            .content-container { 
+                padding: 18px; 
+            }
+
+            iframe { 
+                height: calc(100vh - 140px); 
+            }
         }
 
-        iframe { width: 100%; height: 85vh; border: 1px solid #dee2e6; border-radius: 12px; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; } }
+        @keyframes fadeIn { 
+            from { opacity: 0; transform: translateY(6px); } 
+            to { opacity: 1; transform: translateY(0); } 
+        }
     </style>
 </head>
 <body>
 
 <nav>
     <div class="logo-area"><img src="logo.png" alt="Chilli Beans"></div>
+    
     <div class="menu-group">Principal</div>
-    <div class="nav-link active" onclick="openView('historia')">🏠 Home</div>
-    <div class="nav-link" onclick="openView('venda')">🌶️ Técnica de Venda</div>
-    <div class="nav-link" onclick="openView('rotina')">📅 Agenda Vendedor</div>
+    <a class="nav-link active" data-title="HOME" onclick="openView(this, 'historia')">🏠 Home</a>
+    <a class="nav-link" data-title="TÉCNICA DE VENDA" onclick="openView(this, 'venda')">🌶️ Técnica de Venda</a>
+    <a class="nav-link" data-title="AGENDA VENDEDOR" onclick="openView(this, 'rotina')">📅 Agenda Vendedor</a>
+    
     <div class="menu-group">Gestão</div>
-    <div class="nav-link" onclick="openSheet('https://docs.google.com/spreadsheets/d/e/2PACX-1vTjP1U4Bf1n2XNpBe8WCmWGduljeq0xTyHsytici9D_gul3dm0vor_1ZItm-yX8cQ315NT4VVNR2U4J/pubhtml?gid=1102116016&single=true')">🕒 Horários</div>
-    <div class="nav-link" onclick="openSheet('https://docs.google.com/spreadsheets/d/e/2PACX-1vTjP1U4Bf1n2XNpBe8WCmWGduljeq0xTyHsytici9D_gul3dm0vor_1ZItm-yX8cQ315NT4VVNR2U4J/pubhtml?gid=881852481&single=true')">🧽 Limpeza</div>
-    <div class="nav-link" onclick="openSheet('https://docs.google.com/spreadsheets/d/e/2PACX-1vRPNuxbf2Tixewjj7Z-EXB3GuYOKHtEooSD2LJ4oI3ZRnium3M3BHof0l3I1Yo8k68pFuxxruZge-IE/pubhtml?gid=1534952399&single=true')">📊 Contagem</div>
+    <a class="nav-link" data-title="HORÁRIOS" onclick="openSheet(this, 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTjP1U4Bf1n2XNpBe8WCmWGduljeq0xTyHsytici9D_gul3dm0vor_1ZItm-yX8cQ315NT4VVNR2U4J/pubhtml?gid=1102116016&single=true')">🕒 Horários</a>
+    <a class="nav-link" data-title="LIMPEZA" onclick="openSheet(this, 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTjP1U4Bf1n2XNpBe8WCmWGduljeq0xTyHsytici9D_gul3dm0vor_1ZItm-yX8cQ315NT4VVNR2U4J/pubhtml?gid=881852481&single=true')">🧽 Limpeza</a>
+    <a class="nav-link" data-title="CONTAGEM" onclick="openSheet(this, 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRPNuxbf2Tixewjj7Z-EXB3GuYOKHtEooSD2LJ4oI3ZRnium3M3BHof0l3I1Yo8k68pFuxxruZge-IE/pubhtml?gid=1534952399&single=true')">📊 Contagem</a>
+    
     <div class="menu-group">Recursos</div>
-    <div class="nav-link" onclick="openView('links')">🔗 Links Úteis</div>
-    <div class="nav-link" onclick="openView('tabelas')">👓 Tabelas de Grau</div>
+    <a class="nav-link" data-title="LINKS ÚTEIS" onclick="openView(this, 'links')">🔗 Links Úteis</a>
+    <a class="nav-link" data-title="TABELAS DE GRAU" onclick="openView(this, 'tabelas')">👓 Tabelas de Grau</a>
 </nav>
 
 <main>
-    <header><span id="current-title">HUB DE GESTÃO</span> 🌶️</header>
+    <header><span id="current-title">HOME</span> 🌶️</header>
+    
     <div class="content-container">
 
+        <!-- HOME -->
         <div id="historia" class="content-view active">
             <div class="home-quote">Verdade e olho no olho</div>
             <p>Bem-vindo ao Hub oficial <strong>Chilli Beans Park Shopping Canoas</strong>. Ferramentas, metas e atitude em um só lugar.</p>
         </div>
 
+        <!-- TÉCNICA DE VENDA -->
         <div id="venda" class="content-view">
-            <h2 style="text-transform: uppercase; border-bottom: 2px solid var(--red); display: inline-block;">7 Passos da Venda</h2>
+            <h2 style="text-transform: uppercase; border-bottom: 2px solid var(--red); display: inline-block; margin-bottom: 20px; padding-bottom: 4px;">7 Passos da Venda</h2>
             <div class="step-card"><h4>1. Preparação</h4><p>Arrume-se e chegue com 30min de antecedência.</p></div>
             <div class="step-card"><h4>2. Abordagem</h4><p>Postura proativa. “Seja bem-vindo à Chilli Beans”.</p></div>
             <div class="step-card"><h4>3. Sondagem</h4><p>Perguntas abertas. Conheça a necessidade do cliente.</p></div>
-            <div class="step-card"><h4>4. Demonstração (CVBA)</h4>
+            <div class="step-card">
+                <h4>4. Demonstração (CVBA)</h4>
                 <div class="cvba-box"><b>C</b>aracterística | <b>V</b>antagem | <b>B</b>enefício | <b>A</b>tração</div>
             </div>
             <div class="step-card"><h4>5. Objeções</h4><p>Escuta ativa e soluções proativas.</p></div>
@@ -101,59 +341,84 @@
             <div class="step-card"><h4>7. Fechamento</h4><p>Direto e confiante. <strong>Ofereça Acessórios</strong>, garantias e faça o cadastro.</p></div>
         </div>
 
+        <!-- ROTINA DA SEMANA -->
         <div id="rotina" class="content-view">
-            <div class="grid-buttons" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));">
+            <div class="grid-buttons" style="grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));">
                 <div class="day-card"><h4>Segunda</h4><ul><li>CRM 360° (50+)</li><li>Pendências FDS</li></ul></div>
-                <div class="day-card"><h4>Terça/Quinta</h4><ul><li>Checklist Loja</li><li>Metas</li></ul></div>
+                <div class="day-card"><h4>Terça / Quinta</h4><ul><li>Checklist Loja</li><li>Metas</li></ul></div>
                 <div class="day-card"><h4>Quarta</h4><ul><li>Relógios SAC</li><li>Limpeza Nichos</li></ul></div>
-                <div class="day-card"><h4>Sexta a Dom</h4><ul><li><strong>Foco na Pista</strong></li><li>Respeitar a Vez</li></ul></div>
+                <div class="day-card"><h4>Sexta a Domingo</h4><ul><li><strong>Foco na Pista</strong></li><li>Respeitar a Vez</li></ul></div>
             </div>
         </div>
 
+        <!-- LINKS ÚTEIS -->
         <div id="links" class="content-view">
-            <h2 style="text-transform: uppercase;">Links Úteis</h2>
+            <h2 style="text-transform: uppercase; margin-bottom: 20px;">Links Úteis</h2>
             <div class="grid-buttons">
-                <a href="https://erp.microvix.com.br/" target="_blank" class="btn-action">SISTEMA MICROVIX</a>
-                <a href="https://unichilli.echo.timetoknow.com/login.html" target="_blank" class="btn-action">🎓 UNICHILLI</a>
-                <a href="https://zeissone.com.br/" target="_blank" class="btn-action">🔭 ZEISS ONE</a>
-                <a href="https://nova.extranetchillibeans.com.br/login" target="_blank" class="btn-action">EXTRANET CHILLI</a>
-                <a href="https://indiolab.com/calculo-diametro/" target="_blank" class="btn-action">📏 CALC. DIÂMETRO</a>
-                <a href="https://indiolab.com/calculo-bordas/" target="_blank" class="btn-action">⚖️ CALC. BORDAS</a>
-                <a href="https://vantagens.essilorconecta.com.br/login" target="_blank" class="btn-action">💎 ESSILOR CONECTA</a>
-                <a href="https://www.instagram.com/chillibeansparkshoppingcanoas" target="_blank" class="btn-action">📸 INSTAGRAM</a>
+                <a href="https://erp.microvix.com.br/" target="_blank" rel="noopener noreferrer" class="btn-action">SISTEMA MICROVIX</a>
+                <a href="https://unichilli.echo.timetoknow.com/login.html" target="_blank" rel="noopener noreferrer" class="btn-action">🎓 UNICHILLI</a>
+                <a href="https://zeissone.com.br/" target="_blank" rel="noopener noreferrer" class="btn-action">🔭 ZEISS ONE</a>
+                <a href="https://nova.extranetchillibeans.com.br/login" target="_blank" rel="noopener noreferrer" class="btn-action">EXTRANET CHILLI</a>
+                <a href="https://indiolab.com/calculo-diametro/" target="_blank" rel="noopener noreferrer" class="btn-action">📏 CALC. DIÂMETRO</a>
+                <a href="https://indiolab.com/calculo-bordas/" target="_blank" rel="noopener noreferrer" class="btn-action">⚖️ CALC. BORDAS</a>
+                <a href="https://vantagens.essilorconecta.com.br/login" target="_blank" rel="noopener noreferrer" class="btn-action">💎 ESSILOR CONECTA</a>
+                <a href="https://www.instagram.com/chillibeansparkshoppingcanoas" target="_blank" rel="noopener noreferrer" class="btn-action">📸 INSTAGRAM</a>
             </div>
         </div>
 
+        <!-- TABELAS DE GRAU -->
         <div id="tabelas" class="content-view">
-            <h2 style="text-transform: uppercase;">Cardápio de Lentes</h2>
+            <h2 style="text-transform: uppercase; margin-bottom: 20px;">Cardápio de Lentes</h2>
             <div class="grid-buttons">
-                <a href="https://drive.google.com/drive/folders/1N1F8izwHo1kU-IfeY5zKU57DNJSimPeE" target="_blank" class="btn-action">ZEISS</a>
-                <a href="https://drive.google.com/file/d/19QWbii-ignlsxgpDG5mss1gzxAKls4Hk" target="_blank" class="btn-action">ESSILOR</a>
-                <a href="https://drive.google.com/drive/folders/1sZ6WF9iG_-F4H6us1fVL1Ltg4KQ-aHwR" target="_blank" class="btn-action">CHILLIVISION</a>
-                <a href="https://drive.google.com/file/d/1uWJ3gHlKt44FOP3Ocos882D5RPovA9M4" target="_blank" class="btn-action">HOYA</a>
+                <a href="https://drive.google.com/drive/folders/1N1F8izwHo1kU-IfeY5zKU57DNJSimPeE" target="_blank" rel="noopener noreferrer" class="btn-action">ZEISS</a>
+                <a href="https://drive.google.com/file/d/19QWbii-ignlsxgpDG5mss1gzxAKls4Hk" target="_blank" rel="noopener noreferrer" class="btn-action">ESSILOR</a>
+                <a href="https://drive.google.com/drive/folders/1sZ6WF9iG_-F4H6us1fVL1Ltg4KQ-aHwR" target="_blank" rel="noopener noreferrer" class="btn-action">CHILLIVISION</a>
+                <a href="https://drive.google.com/file/d/1uWJ3gHlKt44FOP3Ocos882D5RPovA9M4" target="_blank" rel="noopener noreferrer" class="btn-action">HOYA</a>
             </div>
         </div>
 
-        <div id="sheet-view" class="content-view"><iframe id="sheet-iframe" src=""></iframe></div>
+        <!-- VISUALIZADOR DE PLANILHAS -->
+        <div id="sheet-view" class="content-view">
+            <iframe id="sheet-iframe" src="" title="Planilha de Gestão"></iframe>
+        </div>
+
     </div>
 </main>
 
 <script>
-    function openView(id) {
+    function setActiveNav(element, title) {
         document.querySelectorAll('.content-view').forEach(v => v.classList.remove('active'));
         document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
-        document.getElementById(id).classList.add('active');
-        const btn = document.querySelector(`[onclick*="${id}"]`);
-        if(btn) btn.classList.add('active');
-        document.getElementById('current-title').innerText = btn.innerText.replace(/[^a-zA-Z ]/g, "").toUpperCase();
+        
+        if (element) {
+            element.classList.add('active');
+        }
+        
+        const titleHeader = document.getElementById('current-title');
+        if (titleHeader) {
+            titleHeader.innerText = title || element.getAttribute('data-title') || "HUB DE GESTÃO";
+        }
     }
-    function openSheet(url) {
-        document.querySelectorAll('.content-view').forEach(v => v.classList.remove('active'));
-        document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
-        document.getElementById('sheet-iframe').src = url + "&rm=minimal";
-        document.getElementById('sheet-view').classList.add('active');
-        document.getElementById('current-title').innerText = "PLANILHA";
+
+    function openView(element, viewId) {
+        setActiveNav(element);
+        const targetView = document.getElementById(viewId);
+        if (targetView) {
+            targetView.classList.add('active');
+        }
+    }
+
+    function openSheet(element, url) {
+        setActiveNav(element);
+        const iframe = document.getElementById('sheet-iframe');
+        iframe.src = url + "&rm=minimal";
+        
+        const sheetView = document.getElementById('sheet-view');
+        if (sheetView) {
+            sheetView.classList.add('active');
+        }
     }
 </script>
+
 </body>
 </html>
